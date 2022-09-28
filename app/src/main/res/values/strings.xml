@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">albertsons_interview</string>
+    <string name="rv_item_label_usedsince">Used Since:</string>
+    <string name="rv_item_label_freq">Freq:</string>
+    <string name="hint_label_searchbyacronym">Search By Acronym</string>
+    <string name="hint_label_searchforacronym">Search For Acronym</string>
+    <string name="rv_item_lf_header">Long Form Variations</string>
+    <string name="rv_item_lf_master">Long Form:</string>
 </resources>
