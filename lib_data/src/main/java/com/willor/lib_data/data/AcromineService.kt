@@ -18,14 +18,14 @@ interface AcromineService {
     ): Response<AcromineResp?>
 
 
-    companion object{
+    companion object {
         const val ENDPOINT = "http://www.nactem.ac.uk/software/acromine/"
         const val PARAM_SHORT_FORM_OF_ACRO = "sf"
         const val PARAM_LONG_FORM_OF_ACRO = "lf"
 
         val retrofit: Retrofit = Retrofit.Builder()
             .addConverterFactory(GsonConverterFactory.create())
-            .baseUrl(AcromineService.ENDPOINT)
+            .baseUrl(ENDPOINT)
             .client(
                 OkHttpClient.Builder()
                     .connectTimeout(5000, TimeUnit.MILLISECONDS)

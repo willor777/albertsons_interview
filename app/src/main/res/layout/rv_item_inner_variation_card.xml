@@ -3,6 +3,7 @@
 <layout>
 
     <data>
+
         <variable
             name="longFormVariation"
             type="com.willor.lib_data.domain.dataobjects.Variation" />
@@ -10,18 +11,18 @@
         <variable
             name="longFormUsedSince"
             type="String" />
+
         <variable
             name="longFormFreq"
             type="String" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="400dp"
         android:layout_height="100dp"
-        android:paddingVertical="@dimen/vertical_edge_padding"
         android:paddingHorizontal="@dimen/horizontal_edge_padding"
-        xmlns:app="http://schemas.android.com/apk/res-auto">
+        android:paddingVertical="@dimen/vertical_edge_padding">
 
         <com.google.android.material.card.MaterialCardView
             android:layout_width="wrap_content"
@@ -85,7 +86,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:text="@string/rv_item_label_usedsince"
-                    android:textSize="@dimen/label_font_size"
+                    android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/guideline19"
                     app:layout_constraintStart_toStartOf="parent"
@@ -105,6 +106,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:text="@string/rv_item_label_freq"
+                    android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/guideline20"
                     app:layout_constraintStart_toStartOf="@+id/guideline18"

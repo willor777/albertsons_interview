@@ -8,7 +8,7 @@ import com.willor.lib_data.domain.dataobjects.LongFormWithVariations
 
 class LongFormAdapter(
     val data: List<LongFormWithVariations>
-): RecyclerView.Adapter<LongFormAdapter.LongFormCard>() {
+) : RecyclerView.Adapter<LongFormAdapter.LongFormCard>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LongFormCard {
         return LongFormCard(
@@ -26,19 +26,19 @@ class LongFormAdapter(
         return data.size
     }
 
-    class LongFormCard(val binding: RvItemCardLongFormBinding)
-        :RecyclerView.ViewHolder(binding.root){
+    class LongFormCard(private val binding: RvItemCardLongFormBinding) :
+        RecyclerView.ViewHolder(binding.root) {
 
-            fun initView(longFormWithVariations: LongFormWithVariations){
+        fun initView(longFormWithVariations: LongFormWithVariations) {
 
-                binding.longFormWithVariations = longFormWithVariations
+            binding.longFormWithVariations = longFormWithVariations
 
-                binding.rvLongFormVariations.adapter = LongFormVariationsAdapter(
-                    longFormWithVariations.variations
-                )
+            binding.rvLongFormVariations.adapter = LongFormVariationsAdapter(
+                longFormWithVariations.variations
+            )
 
-            }
         }
+    }
 
 
 }

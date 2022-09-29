@@ -9,7 +9,7 @@ import com.willor.lib_data.domain.dataobjects.AcromineRespItem
 class SearchResultsRvAdapter(
     val data: List<AcromineRespItem>,
     val onItemClicked: (text: String) -> Unit
-): RecyclerView.Adapter<SearchResultsRvAdapter.RvItem>() {
+) : RecyclerView.Adapter<SearchResultsRvAdapter.RvItem>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RvItem {
         val binding = RvItemAcromineRespItemBinding.inflate(
@@ -27,11 +27,11 @@ class SearchResultsRvAdapter(
         return data.size
     }
 
-    class RvItem(private val binding: RvItemAcromineRespItemBinding): RecyclerView.ViewHolder(binding.root){
+    class RvItem(private val binding: RvItemAcromineRespItemBinding) :
+        RecyclerView.ViewHolder(binding.root) {
 
 
-
-        fun initView(acronym: AcromineRespItem, onItemClicked: (String) -> Unit){
+        fun initView(acronym: AcromineRespItem, onItemClicked: (String) -> Unit) {
 
             binding.acromineItem = acronym
 

@@ -3,6 +3,7 @@
 <layout>
 
     <data>
+
         <variable
             name="acromineItem"
             type="com.willor.lib_data.domain.dataobjects.AcromineRespItem" />
@@ -15,34 +16,31 @@
         android:layout_height="match_parent">
 
         <com.google.android.material.card.MaterialCardView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="20dp"
-            app:cardCornerRadius="10dp"
-            app:cardElevation="@dimen/rv_item_card_elevation"
             android:paddingHorizontal="@dimen/horizontal_edge_padding"
             android:paddingVertical="@dimen/vertical_edge_padding"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="@dimen/rv_item_card_elevation"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            >
+            app:layout_constraintTop_toTopOf="parent">
 
             <TextView
-                android:paddingHorizontal="@dimen/horizontal_content_padding"
                 android:id="@+id/tv_searchresulttitle"
-                android:paddingVertical="10dp"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="@dimen/headline_font_size"
-                android:textStyle="bold"
+                android:paddingHorizontal="@dimen/horizontal_content_padding"
+                android:paddingVertical="10dp"
+                android:textAlignment="center"
                 android:text="@{acromineItem.shortForm}"
-                />
+                android:textSize="@dimen/headline_font_size"
+                android:textStyle="bold" />
 
         </com.google.android.material.card.MaterialCardView>
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-
 
 
 </layout>

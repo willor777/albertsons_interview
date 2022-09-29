@@ -13,7 +13,7 @@ import com.willor.lib_data.domain.dataobjects.Variation
  */
 class LongFormVariationsAdapter(
     val data: List<Variation>
-): RecyclerView.Adapter<LongFormVariationsAdapter.LfVariationItem>(){
+) : RecyclerView.Adapter<LongFormVariationsAdapter.LfVariationItem>() {
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LfVariationItem {
@@ -33,12 +33,12 @@ class LongFormVariationsAdapter(
 
     class LfVariationItem(
         private val binding: RvItemInnerVariationCardBinding
-        ): RecyclerView.ViewHolder(binding.root){
+    ) : RecyclerView.ViewHolder(binding.root) {
 
-            fun initView(variation: Variation){
-                binding.longFormVariation = variation
-                binding.longFormFreq = variation.freq.toString()
-                binding.longFormUsedSince = variation.freq.toString()
-            }
+        fun initView(variation: Variation) {
+            binding.longFormVariation = variation
+            binding.longFormFreq = variation.freq.toString()
+            binding.longFormUsedSince = variation.freq.toString()
         }
+    }
 }

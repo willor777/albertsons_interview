@@ -4,8 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingVertical="@dimen/vertical_edge_padding"
+    android:background=" #cccccc"
     android:paddingHorizontal="@dimen/horizontal_edge_padding"
+    android:paddingVertical="@dimen/vertical_edge_padding"
     tools:context=".main.MainActivity">
 
 
@@ -14,7 +15,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="465dp" />
+        app:layout_constraintGuide_begin="484dp" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline8"
@@ -35,7 +36,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="521dp" />
+        app:layout_constraintGuide_begin="527dp" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline11"
@@ -65,6 +66,25 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_begin="666dp" />
 
+    <ImageView
+        android:id="@+id/btn_back"
+        android:layout_width="63dp"
+        android:layout_height="41dp"
+        android:contentDescription="@string/btn_content_desc_go_back"
+        app:layout_constraintBottom_toTopOf="@+id/guideline2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_baseline_arrow_back_24" />
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:background="@color/black"
+        app:layout_constraintBottom_toTopOf="@id/rv_searchresults"
+        app:layout_constraintTop_toBottomOf="@id/btn_back"
+        tools:layout_editor_absoluteX="6dp" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_searchresults"
         android:layout_width="0dp"
@@ -75,23 +95,36 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline15" />
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:background="@color/black"
+        app:layout_constraintBottom_toTopOf="@id/tv_header_search_by_acro"
+        app:layout_constraintTop_toBottomOf="@id/rv_searchresults" />
+
     <TextView
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:id="@+id/tv_header_search_by_acro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:paddingHorizontal="3dp"
+        android:textColor="@color/black"
         android:text="@string/hint_label_searchbyacronym"
         android:textSize="@dimen/hint_label_font_size"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/guideline10"
-        app:layout_constraintEnd_toStartOf="@+id/guideline8"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline9" />
+        android:textStyle="italic"
+        app:layout_constraintBottom_toTopOf="@+id/edittxt_searchbyacronym"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/edittxt_searchbyacronym"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:contentDescription="@string/edit_txt_content_desc_search_by_acronym"
         android:autofillHints=""
+        android:background="@color/white"
+        android:textColor="@color/black"
+
+        android:contentDescription="@string/edit_txt_content_desc_search_by_acronym"
+        android:digits="@string/edit_txt_digits_search_by_acronym"
         android:ems="10"
         android:inputType="textCapCharacters"
         app:layout_constraintBottom_toTopOf="@+id/guideline11"
@@ -104,50 +137,56 @@
         android:id="@+id/btn_searchbyacronym"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@color/black"
         android:contentDescription="@string/btn_content_desc_search_by_acronym"
         app:layout_constraintBottom_toTopOf="@+id/guideline11"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guideline8"
         app:layout_constraintTop_toTopOf="@+id/guideline10"
-        android:background="@color/black"
         app:srcCompat="@android:drawable/ic_menu_search"
         app:tint="@color/white" />
 
     <TextView
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:paddingHorizontal="3dp"
+        android:textColor="@color/black"
+
         android:text="@string/hint_label_searchforacronym"
         android:textSize="@dimen/hint_label_font_size"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/guideline13"
-        app:layout_constraintEnd_toStartOf="@+id/guideline8"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline12" />
+        android:textStyle="italic"
+        app:layout_constraintBottom_toTopOf="@+id/edittxt_searchforacronym"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/edittxt_searchforacronym"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:autofillHints=""
+        android:textColor="@color/black"
+
+        android:background="@color/white"
         android:contentDescription="@string/edit_txt_content_desc_search_for_acronym"
+        android:digits="@string/edit_text_search_for_acronym"
         android:ems="50"
         android:inputType="textCapWords"
         app:layout_constraintBottom_toTopOf="@+id/guideline14"
         app:layout_constraintEnd_toStartOf="@+id/guideline8"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline13"
-        tools:ignore="LabelFor"
-        android:autofillHints="" />
+        tools:ignore="LabelFor" />
 
     <ImageButton
         android:id="@+id/btn_searchforacronym"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@color/black"
         android:contentDescription="@string/btn_content_desc_to_search_for_acronym"
         app:layout_constraintBottom_toTopOf="@+id/guideline14"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guideline8"
         app:layout_constraintTop_toTopOf="@+id/guideline13"
-        android:background="@color/black"
         app:srcCompat="@android:drawable/ic_menu_search"
         app:tint="@color/white" />
 
@@ -156,25 +195,38 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="49dp" />
+        app:layout_constraintGuide_begin="73dp" />
 
-    <ImageView
-        android:id="@+id/btn_back"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/guideline15"
-        app:layout_constraintEnd_toStartOf="@+id/guideline5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_baseline_arrow_back_24"
-        android:contentDescription="@string/btn_content_desc_go_back" />
+
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_begin="82dp" />
+        app:layout_constraintGuide_begin="131dp" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="5dp"
+        android:text="@string/tv_app_header"
+        android:textAlignment="viewStart"
+        android:textSize="@dimen/label_font_size"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toTopOf="@+id/guideline2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btn_back"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="53dp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
