@@ -1,4 +1,4 @@
-package com.willor.albertsons_interview.main
+package com.willor.albertsons_interview.main.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -36,11 +36,9 @@ class LongFormVariationsAdapter(
         ): RecyclerView.ViewHolder(binding.root){
 
             fun initView(variation: Variation){
-                with(binding){
-                    tvLongFormText.text = variation.longForm
-                    tvLongFormUsedSince.text = variation.usedSince.toString()
-                    tvLongFormFreq.text = variation.freq.toString()
-                }
+                binding.longFormVariation = variation
+                binding.longFormFreq = variation.freq.toString()
+                binding.longFormUsedSince = variation.freq.toString()
             }
         }
 }

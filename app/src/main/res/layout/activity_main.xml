@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingVertical="@dimen/vertial_edge_padding"
+    android:paddingVertical="@dimen/vertical_edge_padding"
     android:paddingHorizontal="@dimen/horizontal_edge_padding"
     tools:context=".main.MainActivity">
 
@@ -90,19 +90,21 @@
         android:id="@+id/edittxt_searchbyacronym"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:contentDescription="search_by_acronym"
+        android:contentDescription="@string/edit_txt_content_desc_search_by_acronym"
+        android:autofillHints=""
         android:ems="10"
         android:inputType="textCapCharacters"
         app:layout_constraintBottom_toTopOf="@+id/guideline11"
         app:layout_constraintEnd_toStartOf="@+id/guideline8"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline10" />
+        app:layout_constraintTop_toTopOf="@+id/guideline10"
+        tools:ignore="LabelFor" />
 
     <ImageButton
         android:id="@+id/btn_searchbyacronym"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:contentDescription="search_button_to_search_by_acronym"
+        android:contentDescription="@string/btn_content_desc_search_by_acronym"
         app:layout_constraintBottom_toTopOf="@+id/guideline11"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guideline8"
@@ -126,19 +128,21 @@
         android:id="@+id/edittxt_searchforacronym"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:contentDescription="search_for_acronym"
+        android:contentDescription="@string/edit_txt_content_desc_search_for_acronym"
         android:ems="50"
         android:inputType="textCapWords"
         app:layout_constraintBottom_toTopOf="@+id/guideline14"
         app:layout_constraintEnd_toStartOf="@+id/guideline8"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline13" />
+        app:layout_constraintTop_toTopOf="@+id/guideline13"
+        tools:ignore="LabelFor"
+        android:autofillHints="" />
 
     <ImageButton
         android:id="@+id/btn_searchforacronym"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:contentDescription="search_button_to_search_for_acronym"
+        android:contentDescription="@string/btn_content_desc_to_search_for_acronym"
         app:layout_constraintBottom_toTopOf="@+id/guideline14"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guideline8"
@@ -152,7 +156,25 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="69dp" />
+        app:layout_constraintGuide_begin="49dp" />
+
+    <ImageView
+        android:id="@+id/btn_back"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline15"
+        app:layout_constraintEnd_toStartOf="@+id/guideline5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_baseline_arrow_back_24"
+        android:contentDescription="@string/btn_content_desc_go_back" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="82dp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
