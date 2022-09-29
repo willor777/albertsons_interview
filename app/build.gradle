@@ -67,5 +67,8 @@ dependencies {
     // Retrofit
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
 
+    // Mockk
+    androidTestImplementation "io.mockk:mockk-android:1.13.2"
+    testImplementation "io.mockk:mockk:1.13.2"
 
 }

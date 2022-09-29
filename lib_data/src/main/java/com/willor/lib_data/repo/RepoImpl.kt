@@ -25,8 +25,10 @@ class RepoImpl(
             if (resp.isSuccessful && !resp.body().isNullOrEmpty()) {
                 emit(resp.body())
             } else {
-                Log.d(tag, "searchByAcronymLongForm called with argument: $acronymShortForm" +
-                        " FAILED. Response Code: ${resp.code()}. Returning Null")
+                Log.d(
+                    tag, "searchByAcronymLongForm called with argument: $acronymShortForm" +
+                            " FAILED. Response Code: ${resp.code()}. Returning Null"
+                )
                 emit(null)
             }
         }
@@ -42,8 +44,10 @@ class RepoImpl(
             if (resp.isSuccessful && !resp.body().isNullOrEmpty()) {
                 emit(resp.body())
             } else {
-                Log.d(tag, "searchByAcronymLongForm called with argument: $acronymLongForm" +
-                        " FAILED. Response Code: ${resp.code()}. Returnign Null")
+                Log.d(
+                    tag, "searchByAcronymLongForm called with argument: $acronymLongForm" +
+                            " FAILED. Response Code: ${resp.code()}. Returnign Null"
+                )
                 emit(null)
             }
         }

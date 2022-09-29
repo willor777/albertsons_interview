@@ -1,10 +1,11 @@
 package com.willor.albertsons_interview.main
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.willor.lib_data.domain.Repo
 import com.willor.lib_data.domain.dataobjects.AcromineResp
 import com.willor.lib_data.domain.dataobjects.LongFormWithVariations
-import com.willor.lib_data.domain.usecases.UseCases
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -16,7 +17,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class MainActivityViewModel @Inject constructor(
-    private val repo: UseCases
+    private val repo: Repo
 ) : ViewModel() {
 
     val tag: String = MainActivityViewModel::class.java.simpleName
@@ -40,7 +41,6 @@ class MainActivityViewModel @Inject constructor(
      * Then change state to show Recycler view.
      */
     fun showSecondaryRvWithLongNameResults(shortFormAcro: String) {
-        if (searchResults.isNullOrEmpty()){return}
 
         for (item in searchResults!!) {
             if (item.shortForm == shortFormAcro) {
@@ -74,14 +74,20 @@ class MainActivityViewModel @Inject constructor(
     }
 
     /**
-     * Calls the repo to search for Acronym
+     * Calls the repo to search for Acronym. Also clears the current data from Recycler Views
      */
     fun searchByAcronym(shortFormAcro: String, onFailure: () -> Unit) {
-        viewModelScope.launch(Dispatchers.IO) {
-            hideBothRvAndClearSearch()
-            repo.searchByAcronymShortForm(shortFormAcro).catch {
 
-            }.collect {
+        viewModelScope.launch(Dispatchers.IO) {
+
+            hideBothRvAndClearSearch()
+            repo.searchByAcronymShortForm(shortFormAcro).catch { e ->
+
+                Log.d(tag, "searchByAcronym Flow collection caught an Exception: $e")
+                onFailure()
+
+            }.collectLatest {
+                Log.d(tag, "searchbyAcronym collection triggered. $it")
                 if (!it.isNullOrEmpty()) {
                     searchResults = it
                     showPrimaryRvWithSearchResults()
@@ -93,12 +99,18 @@ class MainActivityViewModel @Inject constructor(
     }
 
     /**
-     * Calls the repo to search for Acronym by it's Long Name
+     * Calls the repo to search for Acronym by it's Long Name and clears current data from
+     * RecyclerViews.
      */
     fun searchByLongName(longName: String, onFailure: () -> Unit) {
         hideBothRvAndClearSearch()
         viewModelScope.launch(Dispatchers.IO) {
-            repo.searchByAcronymLongForm(longName).collectLatest {
+            repo.searchByAcronymLongForm(longName).catch { e ->
+
+                Log.d(tag, "searchByLongName Flow collection caught an Exception: $e")
+                onFailure()
+
+            }.collectLatest {
                 if (!it.isNullOrEmpty()) {
                     searchResults = it
                     showPrimaryRvWithSearchResults()

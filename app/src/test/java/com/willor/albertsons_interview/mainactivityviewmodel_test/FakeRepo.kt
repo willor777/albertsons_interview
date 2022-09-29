@@ -1,0 +1,33 @@
+package com.willor.albertsons_interview.mainactivityviewmodel_test
+
+import com.willor.lib_data.domain.Repo
+import com.willor.lib_data.domain.dataobjects.AcromineResp
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flow
+
+class FakeRepo: Repo {
+
+
+    override suspend fun searchByAcronymShortForm(acronymShortForm: String): Flow<AcromineResp?> =
+        flow{
+            if (acronymShortForm.isEmpty()){
+                println("A")
+                emit(null)
+            }
+            else{
+                println("B")
+                emit(dummyData)
+            }
+    }
+
+    override suspend fun searchByAcronymLongForm(acronymLongForm: String): Flow<AcromineResp?> =
+        flow{
+            if (acronymLongForm.isEmpty()){
+                emit(null)
+            }
+            else{
+
+                emit(dummyData)
+            }
+        }
+}

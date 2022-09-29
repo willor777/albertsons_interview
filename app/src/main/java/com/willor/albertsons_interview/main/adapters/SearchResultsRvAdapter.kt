@@ -6,6 +6,13 @@ import androidx.recyclerview.widget.RecyclerView
 import com.willor.albertsons_interview.databinding.RvItemAcromineRespItemBinding
 import com.willor.lib_data.domain.dataobjects.AcromineRespItem
 
+
+/**
+ * RecyclerView.Adapter used to display Acronym's from the AcromineRespItem.
+ * RecyclerView Xml Item is rv_item_acromine_resp_item.xml.
+ * Acronym Card is clickable and will trigger a new Recycler View to be displayed showing the
+ * Long forms and Variations of the Acronym.
+ */
 class SearchResultsRvAdapter(
     val data: List<AcromineRespItem>,
     val onItemClicked: (text: String) -> Unit

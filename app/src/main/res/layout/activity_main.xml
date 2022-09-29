@@ -108,8 +108,8 @@
         android:layout_height="wrap_content"
         android:background="@color/white"
         android:paddingHorizontal="3dp"
-        android:textColor="@color/black"
         android:text="@string/hint_label_searchbyacronym"
+        android:textColor="@color/black"
         android:textSize="@dimen/hint_label_font_size"
         android:textStyle="italic"
         app:layout_constraintBottom_toTopOf="@+id/edittxt_searchbyacronym"
@@ -121,12 +121,13 @@
         android:layout_height="0dp"
         android:autofillHints=""
         android:background="@color/white"
-        android:textColor="@color/black"
-
         android:contentDescription="@string/edit_txt_content_desc_search_by_acronym"
+        android:imeOptions="actionSearch"
         android:digits="@string/edit_txt_digits_search_by_acronym"
         android:ems="10"
+        android:singleLine="true"
         android:inputType="textCapCharacters"
+        android:textColor="@color/black"
         app:layout_constraintBottom_toTopOf="@+id/guideline11"
         app:layout_constraintEnd_toStartOf="@+id/guideline8"
         app:layout_constraintStart_toStartOf="parent"
@@ -151,9 +152,9 @@
         android:layout_height="wrap_content"
         android:background="@color/white"
         android:paddingHorizontal="3dp"
-        android:textColor="@color/black"
-
         android:text="@string/hint_label_searchforacronym"
+
+        android:textColor="@color/black"
         android:textSize="@dimen/hint_label_font_size"
         android:textStyle="italic"
         app:layout_constraintBottom_toTopOf="@+id/edittxt_searchforacronym"
@@ -164,13 +165,14 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:autofillHints=""
-        android:textColor="@color/black"
-
         android:background="@color/white"
+        android:imeOptions="actionSearch"
+        android:singleLine="true"
         android:contentDescription="@string/edit_txt_content_desc_search_for_acronym"
         android:digits="@string/edit_text_search_for_acronym"
         android:ems="50"
-        android:inputType="textCapWords"
+        android:inputType="text"
+        android:textColor="@color/black"
         app:layout_constraintBottom_toTopOf="@+id/guideline14"
         app:layout_constraintEnd_toStartOf="@+id/guideline8"
         app:layout_constraintStart_toStartOf="parent"
@@ -198,7 +200,6 @@
         app:layout_constraintGuide_begin="73dp" />
 
 
-
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline5"
         android:layout_width="wrap_content"
@@ -213,9 +214,9 @@
         android:paddingHorizontal="5dp"
         android:text="@string/tv_app_header"
         android:textAlignment="viewStart"
+        android:textColor="@color/black"
         android:textSize="@dimen/label_font_size"
         android:textStyle="bold"
-        android:textColor="@color/black"
         app:layout_constraintBottom_toTopOf="@+id/guideline2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/btn_back"

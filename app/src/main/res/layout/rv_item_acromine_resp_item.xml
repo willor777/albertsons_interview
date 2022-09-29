@@ -34,8 +34,8 @@
                 android:layout_height="wrap_content"
                 android:paddingHorizontal="@dimen/horizontal_content_padding"
                 android:paddingVertical="10dp"
-                android:textAlignment="center"
                 android:text="@{acromineItem.shortForm}"
+                android:textAlignment="center"
                 android:textSize="@dimen/headline_font_size"
                 android:textStyle="bold" />
 

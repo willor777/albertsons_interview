@@ -8,8 +8,8 @@ import com.willor.lib_data.domain.dataobjects.Variation
 
 
 /**
- * Recycler view to display Long Form Variations of Acronyms. Will be used inside the Cardview,
- * which is the MainActivity Recycler View's Item
+ * Recycler view to display Long Form Variations of Acronyms and is horizontal scrollable.
+ * Will be used inside the Cardview of rv_item_card_long_form.xml
  */
 class LongFormVariationsAdapter(
     val data: List<Variation>

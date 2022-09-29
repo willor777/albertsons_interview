@@ -6,6 +6,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.willor.albertsons_interview.databinding.RvItemCardLongFormBinding
 import com.willor.lib_data.domain.dataobjects.LongFormWithVariations
 
+/**
+ * RecyclerView.Adapter used to display Long Form Versions of Acronyms.
+ * The xml file for it's items is rv_item_card_long_form.xml
+ * This RecyclerView's Items also contain a nested horizontal RecyclerView
+ */
 class LongFormAdapter(
     val data: List<LongFormWithVariations>
 ) : RecyclerView.Adapter<LongFormAdapter.LongFormCard>() {

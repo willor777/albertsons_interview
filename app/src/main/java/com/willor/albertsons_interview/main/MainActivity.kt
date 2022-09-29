@@ -22,8 +22,6 @@ import kotlinx.coroutines.launch
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
-    val tag: String = MainActivity::class.java.simpleName
-
     private lateinit var binding: ActivityMainBinding
 
     private val viewModel by viewModels<MainActivityViewModel>()
@@ -42,10 +40,26 @@ class MainActivity : AppCompatActivity() {
     }
 
     /**
-     * Sets up the onClickListeners for both Search Buttons and Back Button
+     * Sets up the onClickListeners for both Search Buttons and Back Button, as well as
+     * the IME action for the EditTexts
      */
     private fun initViews() {
         with(binding) {
+
+            // Editor Keyboard IME Search Action
+            edittxtSearchbyacronym.setOnEditorActionListener { v, actionId, event ->
+                    viewModel.searchByAcronym(
+                        binding.edittxtSearchbyacronym.text.toString(),
+                        onFailure = {
+                            // Launch a Toast on failure
+                            lifecycleScope.launch(Dispatchers.Main) {
+                                Toast.makeText(baseContext, "Search Failed", Toast.LENGTH_SHORT).show()
+                            }
+                        }
+                    )
+                    hideKeyboard(binding.edittxtSearchbyacronym)
+                true
+            }
 
             // Search by acronym button
             btnSearchbyacronym.setOnClickListener {
@@ -59,6 +73,22 @@ class MainActivity : AppCompatActivity() {
                     }
                 )
                 hideKeyboard(binding.edittxtSearchbyacronym)
+            }
+
+            // Editor Keyboard IME Search Action
+            edittxtSearchforacronym.setOnEditorActionListener { v, actionId, event ->
+                    viewModel.searchByLongName(
+                        binding.edittxtSearchforacronym.text.toString(),
+                        onFailure = {
+
+                            // Launch a Toast on failure
+                            lifecycleScope.launch(Dispatchers.Main) {
+                                Toast.makeText(baseContext, "Search Failed", Toast.LENGTH_SHORT).show()
+                            }
+                        }
+                    )
+                    hideKeyboard(binding.edittxtSearchforacronym)
+                true
             }
 
             // Search for acronym button
@@ -92,7 +122,7 @@ class MainActivity : AppCompatActivity() {
 
         // Show Primary RecyclerView -- Acronym Search Results
         lifecycleScope.launch(Dispatchers.Main) {
-            repeatOnLifecycle(Lifecycle.State.STARTED){
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.showAcronymResultsRv.collectLatest {
                     if (it) {
                         showPrimaryResultsRv()
@@ -103,7 +133,7 @@ class MainActivity : AppCompatActivity() {
 
         // Show Secondary Recycler view -- Acronym Long Names
         lifecycleScope.launch(Dispatchers.Main) {
-            repeatOnLifecycle(Lifecycle.State.STARTED){
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.showLongNamesRv.collectLatest {
                     if (it) {
                         showSecondaryResultsRv()
@@ -124,7 +154,7 @@ class MainActivity : AppCompatActivity() {
             })
     }
 
-    private fun hidePrimaryResultsRv(){
+    private fun hidePrimaryResultsRv() {
         binding.rvSearchresults.adapter = null
         viewModel.hideBothRvAndClearSearch()
     }
@@ -136,11 +166,11 @@ class MainActivity : AppCompatActivity() {
         binding.rvSearchresults.adapter = LongFormAdapter(viewModel.longNamesWithVariations!!)
     }
 
-    private fun hideSecondaryShowPrimary(){
+    private fun hideSecondaryShowPrimary() {
         viewModel.showPrimaryRvWithSearchResults()
     }
 
-    private fun hideKeyboard(v: View){
+    private fun hideKeyboard(v: View) {
         (
                 baseContext.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
                 ).hideSoftInputFromWindow(v.windowToken, 0)
@@ -151,7 +181,7 @@ class MainActivity : AppCompatActivity() {
         inputManager.hideSoftInputFromWindow(v.windowToken, 0)
     }
 
-    private fun backButtonBehaviour(){
+    private fun backButtonBehaviour() {
         // If secondary Rv is Showing -> show primary
         if (viewModel.showLongNamesRv.value) {
             hideSecondaryShowPrimary()
@@ -168,7 +198,7 @@ class MainActivity : AppCompatActivity() {
             && !viewModel.showAcronymResultsRv.value
             && (binding.edittxtSearchbyacronym.text.isNotBlank()
                     || binding.edittxtSearchforacronym.text.isNotBlank())
-        ){
+        ) {
             binding.edittxtSearchbyacronym.setText("")
             binding.edittxtSearchforacronym.setText("")
         }
