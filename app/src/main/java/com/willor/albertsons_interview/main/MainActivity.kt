@@ -37,7 +37,7 @@ class MainActivity : AppCompatActivity() {
         // Start the observer jobs
         initObservers()
 
-        onBackPressedDispatcher.addCallback {
+        onBackPressedDispatcher.addCallback(this) {
             backButtonBehaviour()
         }
 
