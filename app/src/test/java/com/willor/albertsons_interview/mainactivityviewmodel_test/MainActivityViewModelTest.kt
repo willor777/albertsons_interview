@@ -11,9 +11,11 @@ import org.junit.Test
 
 class MainActivityViewModelTest {
 
-
     private val viewmodel = MainActivityViewModel(FakeRepo())
 
+    /**
+     * Set up the Log class
+     */
     @Before
     fun setup(){
         mockkStatic(Log::class)
@@ -59,5 +61,25 @@ class MainActivityViewModelTest {
         }
     }
 
+    @Test
+    fun `test showSecondaryRvWithLongNameResults`(){
+
+        runBlocking {
+            // Feed the viewmodel dummy data
+            viewmodel.searchByAcronym("ADD", {})
+            delay(1000)
+        }
+
+
+        viewmodel.showSecondaryRvWithLongNameResults("ADD")
+
+
+        assert(
+            viewmodel.longNamesWithVariations != null
+                    && !viewmodel.showAcronymResultsRv.value
+                    && viewmodel.showLongNamesRv.value
+        )
+
+    }
 
 }
