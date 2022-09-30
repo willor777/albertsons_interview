@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
+import androidx.activity.addCallback
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Lifecycle
@@ -35,6 +36,10 @@ class MainActivity : AppCompatActivity() {
 
         // Start the observer jobs
         initObservers()
+
+        onBackPressedDispatcher.addCallback {
+            backButtonBehaviour()
+        }
 
         setContentView(binding.root)
     }
@@ -208,10 +213,6 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    @Deprecated("Deprecated in Java")
-    override fun onBackPressed() {
-        backButtonBehaviour()
-    }
 }
 
 

@@ -17,9 +17,9 @@ class MainActivityViewModelTest {
      * Set up the Log class
      */
     @Before
-    fun setup(){
+    fun setup() {
         mockkStatic(Log::class)
-        every{ Log.d(any(), any()) } returns 0
+        every { Log.d(any(), any()) } returns 0
     }
 
     @Test
@@ -62,7 +62,7 @@ class MainActivityViewModelTest {
     }
 
     @Test
-    fun `test showSecondaryRvWithLongNameResults`(){
+    fun `test showSecondaryRvWithLongNameResults`() {
 
         runBlocking {
             // Feed the viewmodel dummy data
