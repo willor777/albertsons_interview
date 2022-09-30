@@ -48,16 +48,16 @@ class MainActivity : AppCompatActivity() {
 
             // Editor Keyboard IME Search Action
             edittxtSearchbyacronym.setOnEditorActionListener { v, actionId, event ->
-                    viewModel.searchByAcronym(
-                        binding.edittxtSearchbyacronym.text.toString(),
-                        onFailure = {
-                            // Launch a Toast on failure
-                            lifecycleScope.launch(Dispatchers.Main) {
-                                Toast.makeText(baseContext, "Search Failed", Toast.LENGTH_SHORT).show()
-                            }
+                viewModel.searchByAcronym(
+                    binding.edittxtSearchbyacronym.text.toString(),
+                    onFailure = {
+                        // Launch a Toast on failure
+                        lifecycleScope.launch(Dispatchers.Main) {
+                            Toast.makeText(baseContext, "Search Failed", Toast.LENGTH_SHORT).show()
                         }
-                    )
-                    hideKeyboard(binding.edittxtSearchbyacronym)
+                    }
+                )
+                hideKeyboard(binding.edittxtSearchbyacronym)
                 true
             }
 
@@ -77,17 +77,17 @@ class MainActivity : AppCompatActivity() {
 
             // Editor Keyboard IME Search Action
             edittxtSearchforacronym.setOnEditorActionListener { v, actionId, event ->
-                    viewModel.searchByLongName(
-                        binding.edittxtSearchforacronym.text.toString(),
-                        onFailure = {
+                viewModel.searchByLongName(
+                    binding.edittxtSearchforacronym.text.toString(),
+                    onFailure = {
 
-                            // Launch a Toast on failure
-                            lifecycleScope.launch(Dispatchers.Main) {
-                                Toast.makeText(baseContext, "Search Failed", Toast.LENGTH_SHORT).show()
-                            }
+                        // Launch a Toast on failure
+                        lifecycleScope.launch(Dispatchers.Main) {
+                            Toast.makeText(baseContext, "Search Failed", Toast.LENGTH_SHORT).show()
                         }
-                    )
-                    hideKeyboard(binding.edittxtSearchforacronym)
+                    }
+                )
+                hideKeyboard(binding.edittxtSearchforacronym)
                 true
             }
 

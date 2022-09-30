@@ -5,27 +5,23 @@ import com.willor.lib_data.domain.dataobjects.AcromineResp
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
-class FakeRepo: Repo {
+class FakeRepo : Repo {
 
 
     override suspend fun searchByAcronymShortForm(acronymShortForm: String): Flow<AcromineResp?> =
-        flow{
-            if (acronymShortForm.isEmpty()){
-                println("A")
+        flow {
+            if (acronymShortForm.isEmpty()) {
                 emit(null)
-            }
-            else{
-                println("B")
+            } else {
                 emit(dummyData)
             }
-    }
+        }
 
     override suspend fun searchByAcronymLongForm(acronymLongForm: String): Flow<AcromineResp?> =
-        flow{
-            if (acronymLongForm.isEmpty()){
+        flow {
+            if (acronymLongForm.isEmpty()) {
                 emit(null)
-            }
-            else{
+            } else {
 
                 emit(dummyData)
             }

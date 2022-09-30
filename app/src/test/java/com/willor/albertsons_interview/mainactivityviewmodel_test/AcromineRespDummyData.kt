@@ -6,19 +6,17 @@ import com.willor.lib_data.domain.dataobjects.LongFormWithVariations
 import com.willor.lib_data.domain.dataobjects.Variation
 
 
-
-
 val acromineRespItemDummy = AcromineRespItem(
-    shortForm = "HMM",
+    shortForm = "ADD",
     longFormWithVariations = listOf(
         LongFormWithVariations(
             freq = 1,
-            longForm = "Hello Mad Max",
+            longForm = "Attention Deficit Disorder",
             since = 1999,
             variations = listOf(
                 Variation(
                     freq = 12,
-                    longForm = "hello mad max",
+                    longForm = "attention-deficit-disorder",
                     usedSince = 1999
                 )
             )

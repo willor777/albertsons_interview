@@ -42,14 +42,13 @@ class MainActivityViewModel @Inject constructor(
      */
     fun showSecondaryRvWithLongNameResults(shortFormAcro: String) {
 
-        for (item in searchResults!!) {
-            if (item.shortForm == shortFormAcro) {
-                longNamesWithVariations = item.longFormWithVariations
-                break
-            }
+        // Search the search results list for the AcromineRespItem that matches the one clicked
+        val longNames = searchResults!!.find {
+            it.shortForm == shortFormAcro
         }
 
         // Change state values to show the Long Name recycler view
+        longNamesWithVariations = longNames!!.longFormWithVariations
         _showAcronymResultsRv.value = false
         _showLongNamesRv.value = true
     }
@@ -77,10 +76,10 @@ class MainActivityViewModel @Inject constructor(
      * Calls the repo to search for Acronym. Also clears the current data from Recycler Views
      */
     fun searchByAcronym(shortFormAcro: String, onFailure: () -> Unit) {
+        hideBothRvAndClearSearch()
 
         viewModelScope.launch(Dispatchers.IO) {
 
-            hideBothRvAndClearSearch()
             repo.searchByAcronymShortForm(shortFormAcro).catch { e ->
 
                 Log.d(tag, "searchByAcronym Flow collection caught an Exception: $e")
@@ -111,6 +110,8 @@ class MainActivityViewModel @Inject constructor(
                 onFailure()
 
             }.collectLatest {
+                Log.d(tag, "searchbyLongName collection triggered. $it")
+
                 if (!it.isNullOrEmpty()) {
                     searchResults = it
                     showPrimaryRvWithSearchResults()

@@ -1,6 +1,7 @@
 package com.willor.lib_data.di
 
 import com.willor.lib_data.data.AcromineService
+import com.willor.lib_data.data.RetrofitInstance
 import com.willor.lib_data.domain.Repo
 import com.willor.lib_data.repo.RepoImpl
 import dagger.Module
@@ -17,7 +18,7 @@ object Dependencies {
     @Provides
     @Singleton
     fun provideAcromineService(): AcromineService {
-        return AcromineService.acromineServiceInstance
+        return RetrofitInstance.acromineServiceInstance
     }
 
     @Provides
